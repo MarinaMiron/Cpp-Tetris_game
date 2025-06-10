@@ -1,5 +1,6 @@
 #include <raylib.h>
 #include "../include/Grid.h"
+#include "Blocks.cpp"
 
 int main() 
 {
@@ -15,12 +16,14 @@ int main()
     Grid grid = Grid();
     
     //grid.Print();
+    JBlock block = JBlock();
     
     while(!WindowShouldClose())
     {
         BeginDrawing();
         ClearBackground(darkBlue);
         grid.Draw();
+        block.Draw();
         EndDrawing();
     }
     

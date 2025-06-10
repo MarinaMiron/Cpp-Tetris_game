@@ -16,7 +16,6 @@ public:
     Grid();
     void Initialize();
     void Print();
-    std::vector<Color> GetCellColors();
     void Draw();
     ~Grid();
 };
