@@ -16,7 +16,7 @@ int main()
     Grid grid = Grid();
     
     //grid.Print();
-    JBlock block = JBlock();
+    LBlock block = LBlock();
     
     while(!WindowShouldClose())
     {
