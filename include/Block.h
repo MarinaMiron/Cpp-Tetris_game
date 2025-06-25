@@ -20,5 +20,7 @@ public:
     void Draw();
     void Move(int rows, int column);
     std::vector<Position> GetCellPositions();
+    void Rotate();
+    void UndoRotation();
     ~Block();
 };

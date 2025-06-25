@@ -10,6 +10,7 @@ private:
     Block currentBlock;
     Block nextBlock;
     bool IsBlockOutside();
+    void RotateBlock();
 public:
     Game();
     void Draw();

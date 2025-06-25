@@ -46,6 +46,16 @@ bool Game::IsBlockOutside()
     return false;
 }
 
+void Game::RotateBlock()
+{
+    currentBlock.Rotate();
+    if(IsBlockOutside())
+    {
+        currentBlock.UndoRotation();
+    }
+    
+}
+
 void Game::HandleInput()
 {
     int keyPressed = GetKeyPressed();
@@ -60,8 +70,11 @@ void Game::HandleInput()
         case KEY_DOWN:
             MoveBlockDown();
             break;
-    default:
-        break;
+        case KEY_UP:
+            RotateBlock();
+            break;
+        default:
+            break;
     }
 }
 
