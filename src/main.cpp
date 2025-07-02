@@ -30,6 +30,7 @@ int main()
     
     while(!WindowShouldClose())
     {
+        UpdateMusicStream(game.music);
         game.HandleInput();
         if (EventTriggered(0.2)) // Move block down every 0.2 seconds
         {

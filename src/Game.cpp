@@ -9,6 +9,11 @@ Game::Game()
     nextBlock = GetRandomBlock();
     gameOver = false;
     score = 0;
+    InitAudioDevice();
+    music = LoadMusicStream("Sounds/music.mp3");
+    PlayMusicStream(music);
+    rotateSound = LoadSound("Sounds/rotate.mp3");
+    clearSound = LoadSound("Sounds/clear.mp3");
 }
 
 void Game::Draw()
@@ -69,6 +74,10 @@ void Game::RotateBlock()
         {
             currentBlock.UndoRotation();
         }
+        else
+        {
+            PlaySound(rotateSound);
+        }
     }
 }
 
@@ -78,6 +87,7 @@ void Game::HandleInput()
     if(gameOver && keyPressed != 0)
     {
         gameOver = false;
+        PlayMusicStream(music);
         Reset();
     }
     switch (keyPressed)
@@ -111,10 +121,15 @@ void Game::LockBlock()
     if(BlockFits() == false)
     {
         gameOver = true;
+        StopMusicStream(music);
     }
     nextBlock = GetRandomBlock();
     int rowsCleares = grid.ClearFullRows();
-    UpdateScore(rowsCleares, 0);
+    if(rowsCleares > 0)
+    {
+        PlaySound(rotateSound);
+        UpdateScore(rowsCleares, 0);
+    }
 }
 
 bool Game::BlockFits()
@@ -195,4 +210,9 @@ void Game::UpdateScore(int linesCleared, int moveDownPoints)
     score += moveDownPoints;
 }
 
-Game::~Game(){}
+Game::~Game(){
+    UnloadSound(rotateSound);
+    UnloadSound(clearSound);
+    UnloadMusicStream(music);
+    CloseAudioDevice();
+}

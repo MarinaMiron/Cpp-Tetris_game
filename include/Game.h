@@ -9,6 +9,8 @@ private:
     std::vector<Block> blocks;
     Block currentBlock;
     Block nextBlock;
+    Sound rotateSound;
+    Sound clearSound;
     bool IsBlockOutside();
     void RotateBlock();
     void LockBlock();
@@ -18,6 +20,7 @@ private:
 public:
     bool gameOver;
     int score;
+    Music music;
     Game();
     void Draw();
     Block GetRandomBlock();
