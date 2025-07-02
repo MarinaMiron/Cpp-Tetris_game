@@ -9,10 +9,12 @@ private:
     std::vector<Block> blocks;
     Block currentBlock;
     Block nextBlock;
+    bool gameOver;
     bool IsBlockOutside();
     void RotateBlock();
     void LockBlock();
     bool BlockFits();
+    void Reset();
 public:
     Game();
     void Draw();
