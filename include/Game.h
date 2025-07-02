@@ -14,9 +14,10 @@ private:
     void LockBlock();
     bool BlockFits();
     void Reset();
-    
+
 public:
     bool gameOver;
+    int score;
     Game();
     void Draw();
     Block GetRandomBlock();
@@ -25,5 +26,6 @@ public:
     void MoveBlockLeft();
     void MoveBlockRight();
     void MoveBlockDown();
+    void UpdateScore(int linesCleared, int moveDownPoints);
     ~Game();
 };
